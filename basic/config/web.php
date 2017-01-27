@@ -37,17 +37,24 @@ $config = [
                 ],
             ],
         ],
-        'db' => require(__DIR__ . '/db.php'),
-        /*
-        'urlManager' => [
+        'db1' => require(__DIR__ . '/db.php'),
+        //'db2' => require(__DIR__ . '/db.php'),
+        
+        /*'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+            'enableStrictParsing' => false,
             'rules' => [
             ],
-        ],
-        */
+        ],*/
+        
     ],
     'params' => $params,
+    'modules' => [
+        'amazon' => [
+            'class' => 'app\modules\amazon\Module',
+        ],
+    ],
 ];
 
 if (YII_ENV_DEV) {
