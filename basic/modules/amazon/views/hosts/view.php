@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'currency',
             'lang',
             'feed_product_type',
+            'alias',
         ],
     ]) ?>
 

@@ -29,9 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'external_product_id_type',
             'brand_name',
             'manufacturer',
-            // 'currency',
-            // 'lang',
-            // 'feed_product_type',
+            'currency',
+            'lang',
+            'feed_product_type',
+            'alias',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

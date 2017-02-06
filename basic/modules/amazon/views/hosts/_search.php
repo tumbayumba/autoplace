@@ -25,11 +25,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'manufacturer') ?>
 
-    <?php // echo $form->field($model, 'currency') ?>
+    <?php  echo $form->field($model, 'currency') ?>
 
-    <?php // echo $form->field($model, 'lang') ?>
+    <?php  echo $form->field($model, 'lang') ?>
 
-    <?php // echo $form->field($model, 'feed_product_type') ?>
+    <?php  echo $form->field($model, 'feed_product_type') ?>
+
+     <?php  echo $form->field($model, 'alias') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

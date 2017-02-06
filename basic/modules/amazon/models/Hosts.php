@@ -41,7 +41,7 @@ class Hosts extends \yii\db\ActiveRecord
     {
         return [
             ['sku_prefix', 'required'],
-            [['sku_prefix', 'external_product_id_type', 'brand_name', 'manufacturer', 'currency', 'lang', 'feed_product_type'], 'string', 'max' => 45],
+            [['sku_prefix', 'external_product_id_type', 'brand_name', 'manufacturer', 'currency', 'lang', 'feed_product_type', 'alias'], 'string', 'max' => 45],
         ];
     }
 
@@ -59,6 +59,7 @@ class Hosts extends \yii\db\ActiveRecord
             'currency' => 'Currency',
             'lang' => 'Lang',
             'feed_product_type' => 'Feed Product Type',
+            'alias' => 'Alias',
         ];
     }
 }

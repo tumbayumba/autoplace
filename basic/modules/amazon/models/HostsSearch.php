@@ -19,7 +19,7 @@ class HostsSearch extends Hosts
     {
         return [
             ['id', 'integer'],
-            [['sku_prefix', 'external_product_id_type', 'brand_name', 'manufacturer', 'currency', 'lang', 'feed_product_type'], 'safe'],
+            [['sku_prefix', 'external_product_id_type', 'brand_name', 'manufacturer', 'currency', 'lang', 'feed_product_type', 'alias'], 'safe'],
         ];
     }
 
@@ -68,7 +68,8 @@ class HostsSearch extends Hosts
             ->andFilterWhere(['like', 'manufacturer', $this->manufacturer])
             ->andFilterWhere(['like', 'currency', $this->currency])
             ->andFilterWhere(['like', 'lang', $this->lang])
-            ->andFilterWhere(['like', 'feed_product_type', $this->feed_product_type]);
+            ->andFilterWhere(['like', 'feed_product_type', $this->feed_product_type])
+            ->andFilterWhere(['like', 'alias', $this->alias]);
 
         return $dataProvider;
     }
