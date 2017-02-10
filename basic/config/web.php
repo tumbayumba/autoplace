@@ -38,7 +38,7 @@ $config = [
             ],
         ],
         'db1' => require(__DIR__ . '/db.php'),
-        //'db2' => require(__DIR__ . '/db.php'),
+        'db2' => require(__DIR__ . '/db2.php'),
         
         /*'urlManager' => [
             'enablePrettyUrl' => true,
@@ -53,6 +53,9 @@ $config = [
     'modules' => [
         'amazon' => [
             'class' => 'app\modules\amazon\Module',
+        ],
+        'ebay' => [
+            'class' => 'app\modules\ebay\Module',
         ],
     ],
 ];
