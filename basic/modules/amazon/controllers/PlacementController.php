@@ -6,9 +6,33 @@ use app\modules\amazon\models\Ean;
 use app\modules\amazon\models\FieldMapping;
 use app\modules\amazon\models\CategoryMapping;
 use app\modules\amazon\models\Hosts;
+use yii\filters\AccessControl;
 
 class PlacementController extends \yii\web\Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['*'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        //'actions' => ['*'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
         return $this->render('index');

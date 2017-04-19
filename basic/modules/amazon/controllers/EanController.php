@@ -8,6 +8,7 @@ use app\modules\amazon\models\EanSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * EanController implements the CRUD actions for Ean model.
@@ -20,6 +21,17 @@ class EanController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['*'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        //'actions' => ['*'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

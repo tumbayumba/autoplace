@@ -8,6 +8,7 @@ use app\modules\amazon\models\CategoryMappingSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * CmappingController implements the CRUD actions for CategoryMapping model.
@@ -20,6 +21,17 @@ class CmappingController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['*'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        //'actions' => ['*'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

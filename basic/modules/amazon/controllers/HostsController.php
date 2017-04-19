@@ -8,6 +8,7 @@ use app\modules\amazon\models\HostsSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * HostsController implements the CRUD actions for Hosts model.
@@ -20,6 +21,17 @@ class HostsController extends Controller
     public function behaviors()
     {
         return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['*'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        //'actions' => ['*'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
