@@ -11,6 +11,7 @@
 				<li><a href="<?=Url::toRoute('/amazon/fmapping');?>">Fields mapping</a></li>
 			    <li><a href="<?=Url::toRoute('/amazon/hosts');?>">Hosts</a></li>
 			    <li><a href="<?=Url::toRoute('/amazon/ean');?>">Eans</a></li>
+			    <li><a href="<?=Url::toRoute('/amazon/idsmapping');?>">IDS Mapping</a></li>
 			</ul>
 		</div>
 	</div>
