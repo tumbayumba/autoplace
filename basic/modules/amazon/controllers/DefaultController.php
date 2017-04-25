@@ -4,6 +4,7 @@ namespace app\modules\amazon\controllers;
 
 use yii\web\Controller;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 
 /**
  * Default controller for the `amazon` module

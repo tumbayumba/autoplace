@@ -2,6 +2,7 @@
 
 namespace app\modules\amazon\controllers;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 
 class RevaluationController extends \yii\web\Controller
 {
