@@ -7,9 +7,34 @@ use app\modules\amazon\models\UploadForm;
 use app\modules\amazon\models\Hosts;
 use yii\web\UploadedFile;
 use yii\helpers\Url;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 
 class HoldsController extends \yii\web\Controller
 {
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['*'],
+                'rules' => [
+                    [
+                        'allow' => true,
+                        //'actions' => ['*'],
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'delete' => ['POST'],
+                ],
+            ],
+        ];
+    }
+
     public function actionIndex()
     {
         $model = new UploadForm();
