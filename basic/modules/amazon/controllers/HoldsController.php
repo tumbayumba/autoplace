@@ -5,6 +5,7 @@ use Yii;
 use yii\web\Controller;
 use app\modules\amazon\models\UploadForm;
 use app\modules\amazon\models\Hosts;
+use app\modules\amazon\models\IdsMapping;
 use yii\web\UploadedFile;
 use yii\helpers\Url;
 use yii\filters\AccessControl;
@@ -78,6 +79,33 @@ class HoldsController extends \yii\web\Controller
     		fclose($handle);
     	}
     	return $this->redirect(Url::toRoute('/amazon/holds'));
+    }
+
+    public function actionDeletefilessku()
+    {
+        echo '<pre>';
+        $hold_file = \Yii::getAlias('@webroot').'/files/holds/holds.csv';
+        $delete_file = \Yii::getAlias('@webroot').'/files/holds/delete_'.date('Y-m-d').'_com.csv';
+        $mapping = IdsMapping::find()->where('host_id=3 and sku is not null')->all();
+
+        $ids = [];
+        $holdHandle = fopen($hold_file,"r");
+        while(($buffer=fgetcsv($holdHandle,"1000",","))!==false)
+            if($buffer[0]!='')
+                $ids[$buffer[0]] = strtr($buffer[0],["\n"=>"","\r"=>""]);
+        fclose($holdHandle);
+
+        $content = "TemplateType=Home\tVersion=2015.0408\tThe top 3 rows are for Amazon.com use only. Do not modify or delete the top 3 rows.\n";
+            $content .= "SKU\tUpdate Delete\n";
+            $content .= "item_sku\tupdate_delete\n";
+        foreach($mapping as $map){
+            if(isset($ids[$map->product_id])){
+                $content .= $map->sku."\tDelete\n";
+            }
+        }
+        $handle = fopen($delete_file,"w");
+        fwrite($handle,$content);
+        fclose($handle);
     }
 
 }
